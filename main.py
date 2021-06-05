@@ -2,7 +2,9 @@ from flask import Flask
 from flask import render_template, request
 import ir_lib
 import cos_sim
+
 app = Flask(__name__)
+
 
 # def main():
 #     pass
@@ -46,16 +48,7 @@ tr:nth-child(even) {
 
   <br>
   <br>
-<!--
-<h1>Similarity</h1>
-    <form action="/handle_submit_assignment2" method="POST">
 
-    
-    <input type="text" name="textfield_assignment2"/>
-    <input type="submit" value="Click" />
-  </form>
-
--->
 
   <h1>Cosine Similarity</h1>
     <form action="/handle_submit_assignment3" method="POST">
@@ -78,41 +71,18 @@ def handle_submit_assignment1():
     result = ir_lib.calculate(user_query)
     output = "<table><tr><th>SIM</th><th>File</th></tr>"
     for key in result:
-          output+="<tr>"
-          output+="<td>"
-          output+=str(key[0])
-          output+="</td>"
+        output += "<tr>"
+        output += "<td>"
+        output += str(key[0])
+        output += "</td>"
 
-          output+="<td>"
-          output+=key[1]
-          output+="</td>"
+        output += "<td>"
+        output += key[1]
+        output += "</td>"
 
-          output+="</tr>"
+        output += "</tr>"
 
-    output+="</table>"
-    return output
-
-@app.route("/handle_submit_assignment2", methods=["POST"])
-def handle_submit_assignment2():
-    user_query = request.form["textfield_assignment2"].upper()
-    # result = ir_lib.calculate(user_query)
-    # print(user_query)
-    result = cos_sim.calculate(user_query)
-
-    output = "<table><tr><th>SIM</th><th>File</th></tr>"
-    for key in result:
-          output+="<tr>"
-          output+="<td>"
-          output+=str(key[0])
-          output+="</td>"
-
-          output+="<td>"
-          output+=key[1]
-          output+="</td>"
-
-          output+="</tr>"
-
-    output+="</table>"
+    output += "</table>"
     return output
 
 
@@ -125,22 +95,21 @@ def handle_submit_assignment3():
     print(result)
     output = "<table><tr><th>COS SIM</th><th>File</th></tr>"
     for key in result:
-          output+="<tr>"
-          output+="<td>"
-          output+=str(key[0])
-          output+="</td>"
+        output += "<tr>"
+        output += "<td>"
+        output += str(key[0])
+        output += "</td>"
 
-          output+="<td>"
-          output+=key[1]
-          output+="</td>"
+        output += "<td>"
+        output += key[1]
+        output += "</td>"
 
-          output+="</tr>"
+        output += "</tr>"
 
-    output+="</table>"
+    output += "</table>"
     return output
+
 
 if __name__ == '__main__':
     # main()
     app.run(debug=True)
-    
-    
